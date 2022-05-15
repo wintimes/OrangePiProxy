@@ -1,2 +1,2 @@
 # OrangepiProxy
-A script to set a new proxy from your LAN agent -Special for OrangePi
+A script to set up a local LAN proxy for Orange Pi 
