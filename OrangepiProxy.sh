@@ -1,83 +1,60 @@
 #!/bin/bash
-echo -e "proxy ? [y/n]"
-read option_i0
-if [[ $option_i0 == "y" ]]; then
-    echo -e "1st time to change proxy? [y/n]"
-    read option_i4
-    if [[ $option_i4 == "y" ]]; then
-        echo -e "Do you want change sudoers proxy? [y/n]"
-        read option_i1
-        if [[ $option_i1 == "y" ]]; then
-            #proxy for sudoers
-            rm /etc/sudoers.new
-            cp /etc/sudoers /etc/sudoers.new
-            #vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv DO NOT TOUCH THIS LINE vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv#
-            sed -i 's@Defaults	env_reset@Defaults	env_reset \nDefaults  env_keep += "http_proxy https_proxy ftp_proxy rsync_proxy no_proxy"@g' "/etc/sudoers.new"
-            #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ DO NOT TOUCH THIS LINE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#
-            cp /etc/sudoers.new /etc/sudoers
-        fi
+clear
+set -e
 
-        echo -e "Enter LAN proxy ip:port such as 192.168.31.31:8118"
-        read IP
-        echo -e "IP=${IP}" >> '/etc/ip_proxy'
-        #get ip_proxy from file ip
-        ip_proxy=`sed '/^IP=/!d;s/.*=//' /etc/ip_proxy`
+### set color variables
+green=$(echo -en "\e[92m")
+yellow=$(echo -en "\e[93m")
+red=$(echo -en "\e[91m")
+orange=$(echo -en "\e[38;5;202m")
+cyan=$(echo -en "\e[96m")
+default=$(echo -en "\e[39m")
 
-        echo -e "Do you want change profile proxy? [y/n]"
-        read option_i2
-        if [[ $option_i2 == "y" ]]; then
-            #proxy for profile
-            chmod 777 '/etc/profile'
-            echo -e "export proxy='http://${ip_proxy}'\nexport all_proxy=\$proxy" >> '/etc/profile' 
-            chmod 644 '/etc/profile'
-        fi
-        echo -e "Do you want change wget proxy? [y/n]"
-        read option_i3
-        if [[ $option_i3 == "y" ]]; then
-            #proxy for wget
-            chmod 777 '/etc/wgetrc'
-            sed -i "s@#https_proxy = http://proxy.yoyodyne.com:18023/@https_proxy = http://${ip_proxy}/@g" "/etc/wgetrc"
-            sed -i "s@#http_proxy = http://proxy.yoyodyne.com:18023/@http_proxy = http://${ip_proxy}/@g" "/etc/wgetrc"
-            sed -i "s@#ftp_proxy = http://proxy.yoyodyne.com:18023/@ftp_proxy = http://${ip_proxy}/@g" "/etc/wgetrc"
-            sed -i "s@#use_proxy = on@use_proxy = on@g" "/etc/wgetrc"
-            chmod 644 '/etc/wgetrc'
-        fi
-    fi
-    
-    if [[ $option_i4 == "n" ]]; then
-    #only change proxy ip
-    echo -e 'only change proxy ip?[y/n]'
-    read option_i5
-    if [[ $option_i5 == "y" ]]; then
-        echo -e "Enter LAN proxy ip:port such as 192.168.31.31:8118"
-        read ip_proxy_change        
-        #get last ip_proxy from file-ip_proxy
-        ip_proxy=`sed '/^IP=/!d;s/.*=//' /etc/ip_proxy`
-        
-        sed -i "s@IP=${ip_proxy}@IP=${ip_proxy_change}@g" "/etc/ip_proxy"
-        
-        
-        echo -e "Do you want change profile proxy? [y/n]"
-        read option_i2
-        if [[ $option_i2 == "y" ]]; then
-            #proxy for profile
-            chmod 777 '/etc/profile'
-            sed -i "s@export proxy='http://${ip_proxy}@export proxy='http://${ip_proxy_change}@g" "/etc/profile"
-            chmod 644 '/etc/profile'
-        fi
-        
-        echo -e "Do you want change wget proxy? [y/n]"
-        read option_i3
-        if [[ $option_i3 == "y" ]]; then
-            #proxy for wget
-            chmod 777 '/etc/wgetrc'
-            sed -i "s@https_proxy = http://${ip_proxy}/@https_proxy = http://${ip_proxy_change}/@g" "/etc/wgetrc"
-            sed -i "s@http_proxy = http://${ip_proxy}/@http_proxy = http://${ip_proxy_change}/@g" "/etc/wgetrc"
-            sed -i "s@ftp_proxy = http://${ip_proxy}/@ftp_proxy = http://${ip_proxy_change}/@g" "/etc/wgetrc"
-            chmod 644 '/etc/wgetrc'
-        fi
-        
-    fi
-    fi
-    
-fi
+### sourcing all additional scripts
+SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
+for script in "${SRCDIR}/OrangepiProxy/scripts/"*.sh; do . $script; done
+for script in "${SRCDIR}/OrangepiProxy/scripts/ui/"*.sh; do . $script; done
+
+### set some messages
+warn_msg(){
+  echo -e "${red}<!!!!> $1${default}"
+}
+status_msg(){
+  echo; echo -e "${yellow}###### $1${default}"
+}
+ok_msg(){
+  echo -e "${green}>>>>>> $1${default}"
+}
+title_msg(){
+  echo -e "${cyan}$1${default}"
+}
+get_date(){
+  current_date=$(date +"%y%m%d-%H%M")
+}
+print_unkown_cmd(){
+  ERROR_MSG="Invalid command!"
+}
+
+print_msg(){
+  if [[ "$ERROR_MSG" != "" ]]; then
+    echo -e "${red}"
+    echo -e "#########################################################"
+    echo -e " $ERROR_MSG "
+    echo -e "#########################################################"
+    echo -e "${default}"
+  fi
+  if [ "$CONFIRM_MSG" != "" ]; then
+    echo -e "${green}"
+    echo -e "#########################################################"
+    echo -e " $CONFIRM_MSG "
+    echo -e "#########################################################"
+    echo -e "${default}"
+  fi
+}
+
+clear_msg(){
+  unset CONFIRM_MSG
+  unset ERROR_MSG
+}
+
+main_menu
