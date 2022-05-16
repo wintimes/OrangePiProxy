@@ -6,7 +6,7 @@ A script to set up a local LAN proxy for Orange Pi
 
 * 下载
 ```bash
-wget https://raw.githubusercontent.com/wintimes/OrangepiProxy/main/OrangepiProxy.sh
+git clone https://github.com/wintimes/OrangePiProxy.git
 ```
 * 在win端软件设置好允许局域网代理（按需上网）
 <div align=center>
