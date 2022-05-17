@@ -2,7 +2,7 @@
 
 wget_ui(){
   top_border
-  echo -e "|     ${green}~~~~~~~~~~~ [ Proxy in Profile ] ~~~~~~~~~~~${default}     | "
+  echo -e "|     ${green}~~~~~~~~~~~ [ Proxy in wget ] ~~~~~~~~~~~${default}        | "
   hr
   echo -e "|  Options:                                             | "
   echo -e "|  0) [use_proxy]                                       | "

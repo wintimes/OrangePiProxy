@@ -1,5 +1,5 @@
 main_ui(){
-  printer_header
+  print_header
   top_border
   echo -e "|   $(title_msg "~~~~~~~~~~~~~~~ [ Custom Proxy ] ~~~~~~~~~~~~~~~")    |"
   hr
@@ -16,13 +16,16 @@ main_ui(){
 
 
 main_menu(){
+
+  #status
+  wget_status
   
   print_msg && clear_msg
   main_ui
   while true; do
     read -p "${cyan}Perform action:${default} " action; echo
     case "$action" in
-      0) clear && proxy_status && break;;
+      0) clear && proxy_status_menu && break;;
       
       1) clear && proxy_ipport_menu && break;;
       2) clear && profile_menu && break;;

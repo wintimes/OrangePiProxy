@@ -2,9 +2,9 @@
 
 allinone_ui(){
   top_border
-  echo -e "|     ${green}~~~~~~~~~~~ [ Proxy in Profile ] ~~~~~~~~~~~${default}     | "
+  echo -e "|     ${green}~~~~~~~~~~~ [ ALL PROXY ] ~~~~~~~~~~~${default}             | "
   hr
-  echo -e "|  Firmware:                                            | "
+  echo -e "|  Options:                                             | "
   echo -e "|  1) [http_proxy]                                      | "
   echo -e "|  2) [https_proxy]                                     | "
   echo -e "|  3) [ftp_proxy]                                       | "

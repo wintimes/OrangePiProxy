@@ -14,7 +14,7 @@ default=$(echo -en "\e[39m")
 SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
 for script in "${SRCDIR}/OrangepiProxy/scripts/"*.sh; do . $script; done
 for script in "${SRCDIR}/OrangepiProxy/scripts/ui/"*.sh; do . $script; done
-
+for script in "${SRCDIR}/OrangepiProxy/scripts/proxy_option/"*.sh; do . $script; done
 ### set some messages
 warn_msg(){
   echo -e "${red}<!!!!> $1${default}"
