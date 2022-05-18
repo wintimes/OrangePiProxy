@@ -4,11 +4,9 @@ allinone_ui(){
   top_border
   echo -e "|         ${green}~~~~~~~~~~~ [ ALL PROXY ] ~~~~~~~~~~~${default}         | "
   hr
-  echo -e "|  Options:                                             | "
-  echo -e "|  1) [http_proxy]                                      | "
-  echo -e "|  2) [https_proxy]                                     | "
-  echo -e "|  3) [ftp_proxy]                                       | "
-  echo -e "|  4) [all_proxy]                                       | "
+  options_line
+  echo -e "|  1) [ Setup ]                                         | "
+  echo -e "|  2) [ Change IP&PORT ]                                | "
   back_footer
 }
 allinone_menu(){
@@ -17,29 +15,11 @@ allinone_menu(){
     read -p "${cyan}Perform action:${default} " action; echo
     case "$action" in
       1)
-        do_action "klipper_setup_dialog" "install_ui";;
+        do_action "allinone" "setup_ui_0";;
       2)
-        do_action "moonraker_setup_dialog" "install_ui";;
-      3)
-        do_action "install_webui mainsail" "install_ui";;
-      4)
-        do_action "install_webui fluidd" "install_ui";;
-      5)
-        do_action "install_klipperscreen" "install_ui";;
-      6)
-        do_action "dwc_setup_dialog" "install_ui";;
-      7)
-        do_action "octoprint_setup_dialog" "install_ui";;
-      8)
-        do_action "install_pgc_for_klipper" "install_ui";;
-      9)
-        do_action "install_MoonrakerTelegramBot" "install_ui";;
-      10)
-        do_action "install_mjpg-streamer" "install_ui";;
+        do_action "proxy_ipport_menu" "proxy_ipport_ui";;
       B|b)
         clear; main_menu; break;;
-      *)
-        deny_action "install_ui";;
     esac
   done
   allinone_menu
