@@ -1,5 +1,4 @@
 wget_status(){
-proxystatus=$(cat /etc/wgetrc | grep -c "^#use_proxy = on$")
 #ip regex
 ip_port_regex="[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}"
 #wget status
@@ -10,17 +9,11 @@ IP_wget=$(cat /etc/wgetrc  | egrep -o $ip_port_regex | awk '{arr[$0] = $0}END{fo
   if [ "$IP_wget" != "" ];then
     LAN_ip_wget="$(printf "${green}$(echo ${IP_wget} | cut -f1 -d ':' )${default}" )"
     PROXY_port_wget="$(printf "${green}$(echo ${IP_wget} | cut -f2 -d ':' )       ${default}" )"
-    if [ $proxystatus == 0 ];then
-     wget_proxy_status="$(printf ${green} on ${default})"
-     else 
-     wget_proxy_status="${red}Not Setup!      ${default}  "
-    fi
-    
+    wget_proxy_status="${green} on ${default}"  
   else 
     LAN_ip_wget="${red}Not Setup!      ${default}  "
     PROXY_port_wget="${red}Not Setup!${default}  "
-  fi
-  
+  fi  
 }
 
 
