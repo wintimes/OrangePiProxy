@@ -40,7 +40,7 @@ back_help_footer(){
 print_header(){
   top_border
   echo -e "|     $(title_msg "~~~~~~~~~~~~~ [ ${orange}Orangepi${default} ${cyan}Proxy ] ~~~~~~~~~~~~~${default}")    |"
-  echo -e "|     $(title_msg "    Linux        Proxy_in_LAN      Helper    ")     |"
+  echo -e "|     $(title_msg "          Linux  Proxy_in_LAN  Helper        ")     |"
   echo -e "|     $(title_msg "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")     |"
   bottom_border
 }

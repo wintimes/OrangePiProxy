@@ -2,9 +2,9 @@
 
 sudoers_ui(){
   top_border
-  echo -e "|     ${green}~~~~~~~~~~~ [ Proxy in SUDO ] ~~~~~~~~~~~${default}        | "
+  echo -e "|     ${green}~~~~~~~~~~~ [ Proxy in Sudoers ] ~~~~~~~~~~~${default}      | "
   hr
-  echo -e "|  Options:                                             | "
+  options_line
   echo -e "|  0) [Use proxy]                                       | "
   echo -e "|  1) [Don't use proxy]                                 | "
   back_footer
