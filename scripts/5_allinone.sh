@@ -2,7 +2,7 @@
 
 allinone_ui(){
   top_border
-  echo -e "|     ${green}~~~~~~~~~~~ [ ALL PROXY ] ~~~~~~~~~~~${default}             | "
+  echo -e "|         ${green}~~~~~~~~~~~ [ ALL PROXY ] ~~~~~~~~~~~${default}         | "
   hr
   echo -e "|  Options:                                             | "
   echo -e "|  1) [http_proxy]                                      | "

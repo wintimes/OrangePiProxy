@@ -3,7 +3,7 @@ proxy_ipport_ui(){
   top_border
   echo -e "|        ${green}~~~~~~~~~~~ [ IP & PORT ] ~~~~~~~~~~~${default}          | "
   hr
-  echo -e "|  Options:                                             | "
+  options_line
   echo -e "|  1) [IP]                                              | "
   echo -e "|  2) [PORT]                                            | "
   echo -e "|  3) [IP:PORT]                                         | "

@@ -2,14 +2,16 @@
 
 wget_ui(){
   top_border
-  echo -e "|     ${green}~~~~~~~~~~~ [ Proxy in wget ] ~~~~~~~~~~~${default}        | "
+  echo -e "|       ${green}~~~~~~~~~~~ [ Proxy in wget ] ~~~~~~~~~~~${default}       | "
   hr
-  echo -e "|  Options:                                             | "
+  options_line
   echo -e "|  0) [use_proxy]                                       | "
-  echo -e "|  1) [http_proxy]                                      | "
-  echo -e "|  2) [https_proxy]                                     | "
-  echo -e "|  3) [ftp_proxy]                                       | "
-  echo -e "|  4) [all_proxy]                                       | "
+  echo -e "|  1) [all_proxy]                                       | "
+  echo -e "|  Special:                                             | "  
+  echo -e "|  2) [http_proxy]                                      | "
+  echo -e "|  3) [https_proxy]                                     | "
+  echo -e "|  4) [ftp_proxy]                                       | "
+
   back_footer
 }
 wget_menu(){
@@ -18,13 +20,13 @@ do_action "" "wget_ui"
     read -p "${cyan}Perform action:${default} " action; echo
     case "$action" in
       1)
-        do_action "klipper_setup_dialog" "install_ui";;
+        do_action "" "wget_ui";;
       2)
-        do_action "moonraker_setup_dialog" "install_ui";;
+        do_action "" "wget_ui";;
       3)
-        do_action "install_webui mainsail" "install_ui";;
+        do_action "" "wget_ui";;
       4)
-        do_action "install_webui fluidd" "install_ui";;            
+        do_action "" "main_ui";;            
     B|b)
         clear; main_menu; break;;
       *)
@@ -32,8 +34,4 @@ do_action "" "wget_ui"
     esac
   done
 wget_menu
-}
-wget(){
-do_action "" "wget_ui"
-wget
 }

@@ -3,14 +3,15 @@ main_ui(){
   top_border
   echo -e "|   $(title_msg "~~~~~~~~~~~~~~~ [ Custom Proxy ] ~~~~~~~~~~~~~~~")    |"
   hr
+  options_line
   echo -e "|  0) [ Proxy Status ]                                  |"
-  echo -e "|  ${green}Options: ${default}                                            |"
   echo -e "|  1) [ IP & PORT ]                                     |"
-  echo -e "|  2) [ Profile ]                                       |"
-  echo -e "|  3) [ Wget ]                                          |"
-  echo -e "|  4) [ Git ]                                           |"
-  echo -e "|  5) [ Sudoers ]                                       |"
-
+  hr
+  echo -e "|  2) [ Profile ]               |  Status: $profile_proxy_status           |"
+  echo -e "|  3) [ Wget ]                  |  Status:$wget_proxy_status           |"
+  echo -e "|  4) [ Git ]                   |  Status:$git_proxy_status           |"
+  echo -e "|  5) [ Sudoers ]               |  Status:$sudoers_proxy_status           |"
+  hr
   echo -e "|  6) [ All in one ]                                    |"
   quit_footer
 }

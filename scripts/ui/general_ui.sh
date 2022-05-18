@@ -15,6 +15,10 @@ hr(){
   echo -e "|-------------------------------------------------------|"
 }
 
+options_line(){
+  echo -e "|  ${green}Options: ${default}                                            |"
+}
+
 quit_footer(){
   hr
   echo -e "|                        ${red}Q) Quit${default}                        |"
