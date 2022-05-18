@@ -7,6 +7,8 @@ IP_wget=$(cat /etc/wgetrc  | egrep -o $ip_port_regex | awk '{arr[$0] = $0}END{fo
 ### display status
   #IP
   if [ "$IP_wget" != "" ];then
+  #if [ -n "$IP_wget"  ];then
+  #if [ -n "$IP_wget"  ];then
     LAN_ip_wget="$(printf "${green}$(echo ${IP_wget} | cut -f1 -d ':' )${default}" )"
     PROXY_port_wget="$(printf "${green}$(echo ${IP_wget} | cut -f2 -d ':' )       ${default}" )"
     wget_proxy_status="${green} on ${default}"  
