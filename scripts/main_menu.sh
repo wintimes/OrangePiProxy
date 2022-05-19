@@ -22,7 +22,7 @@ main_menu(){
   profile_status
   git_status
   sudoers_status
-  #print_msg && clear_msg
+  print_msg && clear_msg
   main_ui
   while true; do
     read -p "${cyan}Perform action:${default} " action; echo

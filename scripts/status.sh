@@ -1,5 +1,4 @@
-#!/bin/bash
-wget_LAN_ip_port_status(){
+wget_status(){
 IP_wget=$(cat /etc/wgetrc  | egrep -o "[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}" | awk '{arr[$0] = $0}END{for(i in arr) { print arr[i]}}')
 
 wgetDir=$(find /home -name "wgetrc.bak")
@@ -18,19 +17,6 @@ else
   wget_proxy_status="${green}on       ${default}"
  fi
 fi
-
-}
-
-
-
-#bug 
-#wget_PROXY_status(){}
-
-wget_status(){
-#cat /etc/wgetrc  | egrep -o "^#use_proxy\s\=\son">> ${HOME}/wgetrc.bak
-wget_LAN_ip_port_status
-#wget_PROXY_port_status
-#wget_PROXY_status
 }
 
 profile_status(){
@@ -58,15 +44,13 @@ PROXY_port_profile=$(echo ${IP_profile} | cut -f2 -d ':' )
 
 
 git_status(){
+echo 0
 gitDir=$(find /home -name ".gitconfig")
-#git_ip_port_regex="^[[:blank:]]proxy[[:space:]]\=[[:space:]][[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}"
-#ip_port_regex="[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}"
-#gitproxy=$(cat $gitDir| egrep -o $git_ip_port_regex| awk '{arr[$0] = $0}END{for(i in arr) { print arr[i]}}')
-#IP_git=$(echo ${gitproxy} | egrep -o $ip_port_regex)
-
+echo 1
 ### display status
   #IP
-if [ "$gitDir" ];then
+if [ ! -f "${gitDir}" ];then
+ echo no
  gitproxy=$(cat $gitDir| egrep -o "proxy[[:space:]]\=[[:space:]]http\:\/\/[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}")
  IP_git=$(echo ${gitproxy} | egrep -o "[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}")
  if [ "$IP_git" != "" ]; then
