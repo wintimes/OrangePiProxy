@@ -44,9 +44,9 @@ PROXY_port_profile=$(echo ${IP_profile} | cut -f2 -d ':' )
 
 
 git_status(){
-echo 0
+
 gitDir=$(find /home -name ".gitconfig")
-echo 1
+
 ### display status
   #IP
 if [ ! -f "${gitDir}" ];then
