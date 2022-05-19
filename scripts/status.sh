@@ -44,9 +44,9 @@ PROXY_port_profile=$(echo ${IP_profile} | cut -f2 -d ':' )
 
 
 git_status(){
-
+#echo 0
 gitDir=$(find /home -name ".gitconfig")
-
+#echo 1
 ### display status
   #IP
 if [ ! -f "${gitDir}" ];then
@@ -63,7 +63,7 @@ if [ ! -f "${gitDir}" ];then
     git_proxy_status="${red}off${default}"  
  fi
 else
-   echo 0
+   #echo 0
    LAN_ip_git="${red}Not Setup  ${default}  "
    PROXY_port_git="${red}Not Setup ${default}  " 
    git_proxy_status="${red}Not Setup${default}"  
