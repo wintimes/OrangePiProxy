@@ -1,6 +1,7 @@
-#!/bin/bash
+
 clear
 set -e
+
 
 ### set color variables
 green=$(echo -en "\e[92m")
