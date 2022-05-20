@@ -19,9 +19,6 @@ git clone https://github.com/wintimes/OrangePiProxy.git
 ./OrangePiProxy/OrangpiProxy.sh
 ```
 
-```bash
-sudo bash ~/OrangePiProxy/OrangpiProxy.sh
-```
 
 > :warning: 按需更改sudoers 的代理设置。
 
