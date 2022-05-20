@@ -14,23 +14,15 @@ do_action "" "sudoers_ui"
   while true; do
     read -p "${cyan}Perform action:${default} " action; echo
     case "$action" in
+      0)
+        do_action "sudoers_useproxy" "sudoers_ui";;
       1)
-        do_action "klipper_setup_dialog" "install_ui";;
-      2)
-        do_action "moonraker_setup_dialog" "install_ui";;
-      3)
-        do_action "install_webui mainsail" "install_ui";;
-      4)
-        do_action "install_webui fluidd" "install_ui";;            
+        do_action "sudoers_stopusingproxy" "sudoers_ui";;           
     B|b)
         clear; main_menu; break;;
       *)
-        deny_action "install_ui";;
+        deny_action "main_ui";;
     esac
   done
 sudoers_menu
-}
-sudoers(){
-do_action "" "sudoers_ui"
-sudoers
 }
