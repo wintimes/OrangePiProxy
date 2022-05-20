@@ -13,6 +13,7 @@ main_ui(){
   echo -e "|  5) [ Sudoers ]              |  Status: $sudoers_proxy_status    |"
   hr
   echo -e "|  6) [ All in one ]                                    |"
+  echo -e "|  6) [ TEST ]                                          |"
   quit_footer
 }
 
@@ -34,8 +35,9 @@ main_menu(){
       3) clear && wget_menu && break;;
       4) clear && git_menu && break;;
       5) clear && sudoers_menu && break;;
-
+    
       6) clear && allinone_menu && break;;
+      7) clear && test_menu && break;;
       Q|q)
         echo -e "${green}############ Happy Surfing! ############${default}"; echo
         exit -1;;

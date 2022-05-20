@@ -93,12 +93,16 @@ fi
 }
 
 sudoers_status(){
-sudoers_FILE_COUNT=$(ls -a /etc | grep -E "^sudoers.new$" | wc -l)
-#sudoers status
- if [ "$sudoers_FILE_COUNT" == 1 ]; then
-   sudoers_proxy_status="${green}on        ${default}"
- else
-   sudoers_proxy_status="${red}Not Setup ${default}"
- fi
+sudo cp "/etc/sudoers" "${HOME}/sudoers.new"
+sudo chmod 777 "${HOME}/sudoers.new"
+if grep -E '^Defaults\s\senv_keep\s\+\=\s\"http_proxy\shttps_proxy\sftp_proxy\srsync_proxy\sno_proxy\"$' "${HOME}/sudoers.new" > /dev/null
+then 
+echo on
+  sudoers_proxy_status="${green}on        ${default}"
+else 
+echo off
+  sudoers_proxy_status="${red}Not Setup ${default}"
+fi
+sudo rm "${HOME}/sudoers.new"
 }
 
