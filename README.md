@@ -1,9 +1,8 @@
 # OrangepiProxy
 A script to set up a local LAN proxy for Orange Pi
 <div align=center>
-<img src="https://cdn.jsdelivr.net/gh/wintimes/PicGo_Repo_Mellow@main//20220516222654.png" />
+<img src="https://cdn.jsdelivr.net/gh/wintimes/PicGo_Repo_Mellow@main//20220520115819.png" />
 </div> 
-
 * 下载
 ```bash
 git clone https://github.com/wintimes/OrangePiProxy.git
