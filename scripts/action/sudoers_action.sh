@@ -3,7 +3,7 @@
 sudoers_useproxy(){
 sudo cp "/etc/sudoers" "${HOME}/sudoers.new"
 if grep -E '^Defaults\s\senv_keep\s\+\=\s\"http_proxy\shttps_proxy\sftp_proxy\srsync_proxy\sno_proxy\"$' "${HOME}/sudoers.new" > /dev/null
-then
+    then
   sudoers_proxy_status="${green}on        ${default}"
   echo on
   else

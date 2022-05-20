@@ -71,10 +71,10 @@ PROXY_port_profile=$(echo ${IP_profile} | cut -f2 -d ':' )
 
 
 git_status(){
-gitconfig_FILE_COUNT=$(ls -a ${HOME} | grep -E "^\.gitconfig$" | wc -l)
-### display status
-if [ "$gitconfig_FILE_COUNT" == 1 ] ;then
- gitproxy=$(cat "${HOME}/.gitconfig" | egrep -o "proxy[[:space:]]\=[[:space:]]http\:\/\/[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}")
+if grep -E "proxy" "/home/orangepi/.gitconfig" > /dev/null
+then 
+#echo alreadyproxy
+ gitproxy=$(cat "/home/orangepi/.gitconfig" | egrep -o "proxy[[:space:]]\=[[:space:]]http\:\/\/[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}")
  IP_git=$(echo ${gitproxy} | egrep -o "[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}")
  if [ "$IP_git" != "" ]; then
     LAN_ip_git="$(printf "${green}$(echo ${IP_git} | cut -f1 -d ':' )${default}" )"
@@ -86,6 +86,7 @@ if [ "$gitconfig_FILE_COUNT" == 1 ] ;then
     git_proxy_status="${red}off${default}" 
  fi
 else
+#echo noproxy
    LAN_ip_git="${red}Not Setup  ${default}  "
    PROXY_port_git="${red}Not Setup ${default}  " 
    git_proxy_status="${red}Not Setup${default}"  
