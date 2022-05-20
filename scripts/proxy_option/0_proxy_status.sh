@@ -9,7 +9,7 @@ proxy_status_ui(){
   echo -e "|                           |                           |"
   echo -e "|  2)  Wget                 |  IP:    $LAN_ip_wget     |"
   echo -e "|                           |  PORT:  $PROXY_port_wget       |"
-  echo -e "|                           |  PROXY: $wget_proxy_status         |"
+  echo -e "|                           |  PROXY: $wget_proxy_status     |"
   echo -e "|                           |                           |"
   echo -e "|  3)  Git                  |  IP:    $LAN_ip_git     |"
   echo -e "|                           |  PORT:  $PROXY_port_git      |"

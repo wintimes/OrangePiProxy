@@ -7,10 +7,10 @@ main_ui(){
   echo -e "|  0) [ Proxy Status ]                                  |"
   echo -e "|  1) [ IP & PORT ]                                     |"
   hr
-  echo -e "|  2) [ Profile ]               |  Status: $profile_proxy_status          |"
-  echo -e "|  3) [ Wget ]                  |  Status: $wget_proxy_status    |"
-  echo -e "|  4) [ Git ]                   |  Status: $git_proxy_status    |"
-  echo -e "|  5) [ Sudoers ]               |  Status: $sudoers_proxy_status   |"
+  echo -e "|  2) [ Profile ]              |  Status: $profile_proxy_status           |"
+  echo -e "|  3) [ Wget ]                 |  Status: $wget_proxy_status |"
+  echo -e "|  4) [ Git ]                  |  Status: $git_proxy_status     |"
+  echo -e "|  5) [ Sudoers ]              |  Status: $sudoers_proxy_status    |"
   hr
   echo -e "|  6) [ All in one ]                                    |"
   quit_footer

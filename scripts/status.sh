@@ -1,22 +1,51 @@
 wget_status(){
-IP_wget=$(cat /etc/wgetrc  | egrep -o "[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}" | awk '{arr[$0] = $0}END{for(i in arr) { print arr[i]}}')
-wget_FILE_COUNT=$(ls -a ${HOME} | grep -E "^wgetrc.bak$" | wc -l)
-if [ "$wget_FILE_COUNT" == "0" ];then
- LAN_ip_wget="${red}Not Setup  ${default}  "
- PROXY_port_wget="${red}Not Setup  ${default}"
- wget_proxy_status="${red}Not Setup${default}"
+if grep -E "^#use_proxy\s\=\son" "/etc/wgetrc" > /dev/null 
+then
+#exist   #
+ echo 1
+ echo "notsetup"
+   LAN_ip_wget="${red}Not Setup  ${default}  "
+   PROXY_port_wget="${red}Not Setup  ${default}"
+   wget_proxy_status="${red}Not Setup${default}" 
 else
- if [ -z "$IP_wget" ];then
-  LAN_ip_wget="${red}Not Setup  ${default}  "
-  PROXY_port_wget="${red}Not Setup  ${default}"
-  wget_proxy_status="${red}off      ${default}"
+#no exist   #
+ echo 0
+ echo "on_off"
+  IP_wget=$(cat /etc/wgetrc  | egrep -o "[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}" | awk '{arr[$0] = $0}END{for(i in arr) { print arr[i]}}')
+  if grep -E "^use_proxy\s\=\son$" "/etc/wgetrc" > /dev/null
+  then
+  #on exist
+  echo "on"
+    if [ ! -z "$IP_wget" ];then
+     LAN_ip_wget="$(printf "${green}$(echo ${IP_wget} | cut -f1 -d ':' )${default}" )"
+     PROXY_port_wget="$(printf "${green}$(echo ${IP_wget} | cut -f2 -d ':' )       ${default}" )"
+     wget_proxy_status="${red}on       ${default}"
+     echo "on_ip:port"
+    else
+     echo "Not Finished"
+       LAN_ip_wget="${red}Not Setup  ${default}  "
+       PROXY_port_wget="${red}Not Setup  ${default}"
+       wget_proxy_status="${red}Setup IP:port${default}"
+   fi
  else
-  LAN_ip_wget="$(printf "${green}$(echo ${IP_wget} | cut -f1 -d ':' )${default}" )"
-  PROXY_port_wget="$(printf "${green}$(echo ${IP_wget} | cut -f2 -d ':' )       ${default}" )"
-  wget_proxy_status="${green}on       ${default}"
- fi
+ #on not exist
+  echo "off"
+  if [ ! -z "$IP_wget" ];then
+    LAN_ip_wget="$(printf "${green}$(echo ${IP_wget} | cut -f1 -d ':' )${default}" )"
+    PROXY_port_wget="$(printf "${green}$(echo ${IP_wget} | cut -f2 -d ':' )       ${default}" )"
+    wget_proxy_status="${red}off          ${default}"
+    echo "off_ip:port"
+   else
+     echo "Not Finished"
+       LAN_ip_wget="${red}Not Setup  ${default}  "
+       PROXY_port_wget="${red}Not Setup  ${default}"
+       wget_proxy_status="${red}off          ${default}"
+  fi
+ fi  
 fi
 }
+
+
 
 profile_status(){
 #ip regex
