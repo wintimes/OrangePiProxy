@@ -98,10 +98,10 @@ sudo cp "/etc/sudoers" "${HOME}/sudoers.new"
 sudo chmod 777 "${HOME}/sudoers.new"
 if grep -E '^Defaults\s\senv_keep\s\+\=\s\"http_proxy\shttps_proxy\sftp_proxy\srsync_proxy\sno_proxy\"$' "${HOME}/sudoers.new" > /dev/null
 then 
-echo on
+#echo on
   sudoers_proxy_status="${green}on        ${default}"
 else 
-echo off
+#echo off
   sudoers_proxy_status="${red}Not Setup ${default}"
 fi
 sudo rm "${HOME}/sudoers.new"
