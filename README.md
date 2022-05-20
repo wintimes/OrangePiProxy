@@ -16,8 +16,13 @@ git clone https://github.com/wintimes/OrangePiProxy.git
 
 * 执行脚本
 ```bash
-sudo bash OrangpiProxy.sh
+./OrangePiProxy/OrangpiProxy.sh
 ```
+
+```bash
+sudo bash ~/OrangePiProxy/OrangpiProxy.sh
+```
+
 > :warning: 按需更改sudoers 的代理设置。
 
-> :warning: 生成了新的ip_proxy 为必要文件，请不要删除
+> :warning: 生成了新的`ip_proxy``wgetrc.bak` 为必要文件，请不要删除
