@@ -24,7 +24,7 @@ else
      #echo "Not Finished"
        LAN_ip_wget="${red}Not Setup  ${default}  "
        PROXY_port_wget="${red}Not Setup  ${default}"
-       wget_proxy_status="${red}Setup IP:port${default}"
+       wget_proxy_status="${yellow}Setup IP:port${default}"
    fi
  else
  #on not exist
