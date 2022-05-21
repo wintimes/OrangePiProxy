@@ -35,7 +35,7 @@ else
      #echo "lan_ip_length is $lan_ip_length"
      #echo -e "|  2)  Wget                 |  IP:    ${LAN_ip_wget} ${wget_blank_ip_length}|"
      #echo "$wget_blank_ip_length""1"
-     echo "on_ip:port"
+     #echo "on_ip:port"
 ##port
      wget_PROXY_port_length=$(echo "$PROXY_port_wget" | awk '{print length($0)}')
      #echo $lan_ip_length
@@ -47,7 +47,7 @@ else
       #echo $i
       wget_blank_port_length="${wget_blank_port_length}"" "
      done
-     echo -e "|                           |  PORT:  ${PROXY_port_wget}${wget_blank_port_length}|"
+     #echo -e "|                           |  PORT:  ${PROXY_port_wget}${wget_blank_port_length}|"
     else
      #echo "Not Finished"
        LAN_ip_wget="${red}Not Setup  ${default}  "
