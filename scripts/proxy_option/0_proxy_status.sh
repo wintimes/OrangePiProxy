@@ -3,11 +3,11 @@ proxy_status_ui(){
   top_border
   echo -e "|         ${green}~~~~~~~~~~~ [ STATUS ] ~~~~~~~~~~~${default}            | "
   hr
-  echo -e "|  1)  Profile[ global ]    |  IP:    $LAN_ip_profile     |"
+echo -e "|  1)  Profile[ global ]    |  IP:    ${LAN_ip_profile} ${profile_blank_ip_length}|"
   echo -e "|                           |  PORT:  $PROXY_port_profile     |"  
   echo -e "|                           |  PROXY: $profile_proxy_status               |"
   echo -e "|                           |                           |"
-  echo -e "|  2)  Wget                 |  IP:    $LAN_ip_wget     |"
+  echo -e "|  2)  Wget                 |  IP:    ${LAN_ip_wget}${wget_blank_ip_length}|"
   echo -e "|                           |  PORT:  $PROXY_port_wget       |"
   echo -e "|                           |  PROXY: $wget_proxy_status     |"
   echo -e "|                           |                           |"
