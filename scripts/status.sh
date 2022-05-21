@@ -34,7 +34,7 @@ else
      #echo "lan_ip_length is $lan_ip_length"
      #echo -e "|  2)  Wget                 |  IP:    ${LAN_ip_wget} ${wget_blank_ip_length}|"
      #echo "$wget_blank_ip_length""1"
-     echo "on_ip:port"
+     #echo "on_ip:port"
      
     else
      #echo "Not Finished"
@@ -79,7 +79,7 @@ PROXY_port_profile=$(echo ${IP_profile} | cut -f2 -d ':' )
      profile_lan_ip_length=$(echo "$LAN_ip_profile" | awk '{print length($0)}')
      #echo $lan_ip_length
      profile_blank_length=`expr 27 - ${profile_lan_ip_length}`
-     echo "profile_blank_length is $profile_blank_length"
+     #echo "profile_blank_length is $profile_blank_length"
      profile_blank_ip_length=""
      for ((i = 1; i <= $profile_blank_length; i++))
       do
