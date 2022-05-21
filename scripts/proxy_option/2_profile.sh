@@ -17,13 +17,13 @@ do_action "" "profile_ui"
     read -p "${cyan}Perform action:${default} " action; echo
     case "$action" in
       1)
-        do_action "klipper_setup_dialog" "install_ui";;
+        do_action "" "install_ui";;
       2)
-        do_action "moonraker_setup_dialog" "install_ui";;
+        do_action "" "install_ui";;
       3)
-        do_action "install_webui mainsail" "install_ui";;
+        do_action "" "install_ui";;
       4)
-        do_action "install_webui fluidd" "install_ui";;            
+        do_action "" "install_ui";;            
     B|b)
         clear; main_menu; break;;
       *)

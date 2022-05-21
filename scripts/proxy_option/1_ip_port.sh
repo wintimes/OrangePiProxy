@@ -17,7 +17,7 @@ do_action "" "proxy_ipport_ui"
       1)
         do_action "change_ip" "proxy_ipport_ui";;
       2)
-        do_action "moonraker_setup_dialog" "install_ui";;
+        do_action "change_port" "proxy_ipport_ui";;
       3)
         do_action "change_ip_port" "proxy_ipport_ui";;       
     B|b)
