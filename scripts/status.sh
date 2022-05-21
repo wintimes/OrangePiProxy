@@ -20,6 +20,7 @@ else
      PROXY_port_wget="$(printf "${green}$(echo ${IP_wget} | cut -f2 -d ':' )       ${default}" )"
      wget_proxy_status="${green}on           ${default}"
      #blank
+##ip
      lan_ip_length=$(echo "$LAN_ip_wget" | awk '{print length($0)}')
      #echo $lan_ip_length
      wget_blank_length=`expr 28 - ${lan_ip_length}`
@@ -34,8 +35,19 @@ else
      #echo "lan_ip_length is $lan_ip_length"
      #echo -e "|  2)  Wget                 |  IP:    ${LAN_ip_wget} ${wget_blank_ip_length}|"
      #echo "$wget_blank_ip_length""1"
-     #echo "on_ip:port"
-     
+     echo "on_ip:port"
+##port
+     wget_PROXY_port_length=$(echo "$PROXY_port_wget" | awk '{print length($0)}')
+     #echo $lan_ip_length
+     port_wget_blank_length=`expr 28 - ${wget_PROXY_port_length}`
+     #echo "profile_blank_length is $profile_blank_length"
+     wget_blank_port_length=""
+     for ((i = 1; i <= $port_wget_blank_length; i++))
+      do
+      #echo $i
+      wget_blank_port_length="${wget_blank_port_length}"" "
+     done
+     echo -e "|                           |  PORT:  ${PROXY_port_wget}${wget_blank_port_length}|"
     else
      #echo "Not Finished"
        LAN_ip_wget="${red}Not Setup  ${default}  "
@@ -75,7 +87,8 @@ PROXY_port_profile=$(echo ${IP_profile} | cut -f2 -d ':' )
     LAN_ip_profile="$(printf "${green}$(echo ${IP_profile} | cut -f1 -d ':' )${default}" )"
     PROXY_port_profile="$(printf "${green}$(echo ${IP_profile} | cut -f2 -d ':' )         ${default}" )"
     profile_proxy_status="${green}on ${default}"
-     #blank
+     ###blank###
+###ip
      profile_lan_ip_length=$(echo "$LAN_ip_profile" | awk '{print length($0)}')
      #echo $lan_ip_length
      profile_blank_length=`expr 27 - ${profile_lan_ip_length}`
@@ -89,14 +102,25 @@ PROXY_port_profile=$(echo ${IP_profile} | cut -f2 -d ':' )
      #echo "$profile_blank_ip_length" | awk '{print length($0)}'
      #echo "lan_ip_length is $lan_ip_length"
      #echo -e "|  1)  Profile[ global ]    |  IP:    ${LAN_ip_profile} ${profile_blank_ip_length}|"
-     #echo "$profile_blank_ip_length""1"    
+     #echo "$profile_blank_ip_length""1"   
+###port 
+     profile_PROXY_port_length=$(echo "$PROXY_port_profile" | awk '{print length($0)}')
+     #echo $lan_ip_length
+     port_profile_blank_length=`expr 28 - ${profile_PROXY_port_length}`
+     #echo "profile_blank_length is $profile_blank_length"
+     profile_blank_port_length=""
+     for ((i = 1; i <= $port_profile_blank_length; i++))
+      do
+      #echo $i
+      profile_blank_port_length="${profile_blank_port_length}"" "
+     done
+     #echo -e "|                           |  PORT:  ${PROXY_port_profile}${profile_blank_port_length}|"
   else 
     LAN_ip_profile="${red}Not Setup  ${default}  "
     PROXY_port_profile="${red}Not Setup    ${default}" 
     profile_proxy_status="${red}off${default}" 
   fi
 #profile_proxy_status=$(cat /etc/profile | grep -E "all_proxy" )
-
 }
 
 
