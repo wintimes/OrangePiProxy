@@ -134,6 +134,34 @@ then
     LAN_ip_git="$(printf "${green}$(echo ${IP_git} | cut -f1 -d ':' )${default}" )"
     PROXY_port_git="$(printf "${green}$(echo ${IP_git} | cut -f2 -d ':' )        ${default}" )"
     git_proxy_status="${green}on       ${default}"
+     ###blank###
+###ip
+     git_lan_ip_length=$(echo "$LAN_ip_git" | awk '{print length($0)}')
+     #echo $lan_ip_length
+     git_blank_length=`expr 27 - ${git_lan_ip_length}`
+     #echo "git_blank_length is $git_blank_length"
+     git_blank_ip_length=""
+     for ((i = 1; i <= $git_blank_length; i++))
+      do
+      #echo $i
+      git_blank_ip_length="${git_blank_ip_length}"" "
+     done
+     #echo "$git_blank_ip_length" | awk '{print length($0)}'
+     #echo "lan_ip_length is $lan_ip_length"
+     #echo -e "|  3)  Git                  |  IP:    ${LAN_ip_git} ${git_blank_ip_length}|"
+     #echo "$git_blank_ip_length""1"   
+###port 
+     git_PROXY_port_length=$(echo "$PROXY_port_git" | awk '{print length($0)}')
+     #echo $lan_ip_length
+     port_git_blank_length=`expr 28 - ${git_PROXY_port_length}`
+     #echo "git_blank_length is $git_blank_length"
+     git_blank_port_length=""
+     for ((i = 1; i <= $port_git_blank_length; i++))
+      do
+      #echo $i
+      git_blank_port_length="${git_blank_port_length}"" "
+     done
+     #echo -e "|                           |  PORT:  ${PROXY_port_git}${git_blank_port_length}|"       
  else 
     LAN_ip_git="${red}Not Setup       ${default}  "
     PROXY_port_git="${red}Not Setup ${default}  " 
