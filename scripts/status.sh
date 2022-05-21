@@ -19,7 +19,23 @@ else
      LAN_ip_wget="$(printf "${green}$(echo ${IP_wget} | cut -f1 -d ':' )${default}" )"
      PROXY_port_wget="$(printf "${green}$(echo ${IP_wget} | cut -f2 -d ':' )       ${default}" )"
      wget_proxy_status="${green}on           ${default}"
-     #echo "on_ip:port"
+     #blank
+     lan_ip_length=$(echo "$LAN_ip_wget" | awk '{print length($0)}')
+     #echo $lan_ip_length
+     wget_blank_length=`expr 28 - ${lan_ip_length}`
+     #echo "wget_blank_length is $wget_blank_length"
+     wget_blank_ip_length=""
+     for ((i = 1; i <= $wget_blank_length; i++))
+      do
+      #echo $i
+      wget_blank_ip_length="${wget_blank_ip_length}"" "
+     done
+     #echo "$wget_blank_ip_length" | awk '{print length($0)}'
+     #echo "lan_ip_length is $lan_ip_length"
+     #echo -e "|  2)  Wget                 |  IP:    ${LAN_ip_wget} ${wget_blank_ip_length}|"
+     #echo "$wget_blank_ip_length""1"
+     echo "on_ip:port"
+     
     else
      #echo "Not Finished"
        LAN_ip_wget="${red}Not Setup  ${default}  "
@@ -45,7 +61,6 @@ fi
 }
 
 
-
 profile_status(){
 #ip regex
 ip_port_regex="[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}"
@@ -60,6 +75,21 @@ PROXY_port_profile=$(echo ${IP_profile} | cut -f2 -d ':' )
     LAN_ip_profile="$(printf "${green}$(echo ${IP_profile} | cut -f1 -d ':' )${default}" )"
     PROXY_port_profile="$(printf "${green}$(echo ${IP_profile} | cut -f2 -d ':' )         ${default}" )"
     profile_proxy_status="${green}on ${default}"
+     #blank
+     profile_lan_ip_length=$(echo "$LAN_ip_profile" | awk '{print length($0)}')
+     #echo $lan_ip_length
+     profile_blank_length=`expr 27 - ${profile_lan_ip_length}`
+     echo "profile_blank_length is $profile_blank_length"
+     profile_blank_ip_length=""
+     for ((i = 1; i <= $profile_blank_length; i++))
+      do
+      #echo $i
+      profile_blank_ip_length="${profile_blank_ip_length}"" "
+     done
+     #echo "$profile_blank_ip_length" | awk '{print length($0)}'
+     #echo "lan_ip_length is $lan_ip_length"
+     #echo -e "|  1)  Profile[ global ]    |  IP:    ${LAN_ip_profile} ${profile_blank_ip_length}|"
+     #echo "$profile_blank_ip_length""1"    
   else 
     LAN_ip_profile="${red}Not Setup  ${default}  "
     PROXY_port_profile="${red}Not Setup    ${default}" 
@@ -71,10 +101,10 @@ PROXY_port_profile=$(echo ${IP_profile} | cut -f2 -d ':' )
 
 
 git_status(){
-if grep -E "proxy" "/home/orangepi/.gitconfig" > /dev/null
+if grep -E "proxy" "$SRCDIR/.gitconfig" > /dev/null
 then 
 #echo alreadyproxy
- gitproxy=$(cat "/home/orangepi/.gitconfig" | egrep -o "proxy[[:space:]]\=[[:space:]]http\:\/\/[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}")
+ gitproxy=$(cat "$SRCDIR/.gitconfig" | egrep -o "proxy[[:space:]]\=[[:space:]]http\:\/\/[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}")
  IP_git=$(echo ${gitproxy} | egrep -o "[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}")
  if [ "$IP_git" != "" ]; then
     LAN_ip_git="$(printf "${green}$(echo ${IP_git} | cut -f1 -d ':' )${default}" )"
