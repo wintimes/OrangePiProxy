@@ -6,6 +6,9 @@ A script to set up a local LAN proxy for Orange Pi
 
 * 下载
 ```bash
+cd ~
+```
+```bash
 git clone https://github.com/wintimes/OrangePiProxy.git
 ```
 * 在其他端代理软件设置好允许局域网代理，以Windows的v2net 为例：
@@ -17,6 +20,11 @@ git clone https://github.com/wintimes/OrangePiProxy.git
 * 执行脚本
 ```bash
 ./OrangePiProxy/OrangpiProxy.sh
+```
+* 如果更改 `sudoers` 代理请执行
+
+```bash 
+sudo bash ~/OrangePiProxy/OrangepiProxy.sh
 ```
 
 
