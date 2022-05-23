@@ -125,12 +125,13 @@ PROXY_port_profile=$(echo ${IP_profile} | cut -f2 -d ':' )
 
 
 git_status(){
-if [  -f "/home/orangepi/.gitconfig" ];then
- echo ".gitconfig  exist"
-if grep -E "proxy" "$SRCDIR/.gitconfig" > /dev/null
+gitconfigDir=$( find /home -name ".gitconfig" )
+if [  -f "$gitconfigDir" ];then
+ #echo ".gitconfig  exist"
+if grep -E "proxy" "$gitconfigDir" > /dev/null
 then 
 #echo alreadyproxy
- gitproxy=$(cat "$SRCDIR/.gitconfig" | egrep -o "proxy[[:space:]]\=[[:space:]]http\:\/\/[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}")
+ gitproxy=$(cat "$gitconfigDir" | egrep -o "proxy[[:space:]]\=[[:space:]]http\:\/\/[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}")
  IP_git=$(echo ${gitproxy} | egrep -o "[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}:[[:digit:]]{0,9}")
  if [ "$IP_git" != "" ]; then
     LAN_ip_git="$(printf "${green}$(echo ${IP_git} | cut -f1 -d ':' )${default}" )"

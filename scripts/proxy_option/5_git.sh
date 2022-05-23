@@ -7,7 +7,8 @@ git_ui(){
   echo -e "|  1) [IP]                                              | "
   echo -e "|  2) [PORT]                                            | "
   echo -e "|  3) [IP:PORT]                                         | "
-  echo -e "|  4) [PROXY]                                           | "
+  echo -e "|  4) [Proxy]                                           | "
+  echo -e "|  5) [Unset]                                           | "
   back_footer
 }
 git_menu(){
@@ -22,7 +23,9 @@ do_action "" "git_ui"
       3)
         do_action "change_ip_port_git";;
       4)
-        do_action "change_proxy_git" ;;            
+        do_action "change_proxy_git" ;;
+      5)
+        do_action "unset_proxy_git" ;;              
     B|b)
         clear; main_menu; break;;
     esac
