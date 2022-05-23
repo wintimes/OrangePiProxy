@@ -54,7 +54,17 @@ kiauh_update_msg(){
   echo -e "|${yellow}  It is recommended to keep KIAUH up to date. Updates  ${default}| "
   echo -e "|${yellow}  usually contain bugfixes, important changes or new   ${default}| "
   echo -e "|${yellow}  features. Please consider updating!                  ${default}| "
-  bottom_border
+  back
+}
+
+in_developing(){
+  top_border
+  echo -e "|${green}                                                      ${default} | "
+  echo -e "|${green}              This feature is developing              ${default} | "
+  echo -e "|${green}                                                      ${default} | "
+  echo -e "|${green}                      Coming soon                     ${default} | "
+  echo -e "|${green}                                                      ${default} | "
+  back_footer
 }
 
 ################################################################################
