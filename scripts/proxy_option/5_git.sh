@@ -20,9 +20,9 @@ do_action "" "git_ui"
       2)
         do_action "change_port_git" "git_ui";;
       3)
-        do_action "change_ip_port_git" "git_ui";;
+        do_action "change_ip_port_git";;
       4)
-        do_action "change_proxy_git" "git_ui";;            
+        do_action "change_proxy_git" ;;            
     B|b)
         clear; main_menu; break;;
     esac
