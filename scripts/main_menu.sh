@@ -13,7 +13,7 @@ main_ui(){
   echo -e "|  5) [ Sudoers ]              |  Status: $sudoers_proxy_status    |"
   hr
   echo -e "|  6) [ All in one ]                                    |"
-  echo -e "|  6) [ TEST ]                                          |"
+  echo -e "|  7) [ TEST ]                                          |"
   quit_footer
 }
 

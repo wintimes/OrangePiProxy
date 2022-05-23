@@ -125,6 +125,8 @@ PROXY_port_profile=$(echo ${IP_profile} | cut -f2 -d ':' )
 
 
 git_status(){
+if [  -f "/home/orangepi/.gitconfig" ];then
+ echo ".gitconfig  exist"
 if grep -E "proxy" "$SRCDIR/.gitconfig" > /dev/null
 then 
 #echo alreadyproxy
@@ -169,8 +171,13 @@ then
  fi
 else
 #echo noproxy
-   LAN_ip_git="${red}Not Setup  ${default}  "
-   PROXY_port_git="${red}Not Setup ${default}  " 
+   LAN_ip_git="${red}Not Setup  ${default}      "
+   PROXY_port_git="${red}Not Setup ${default}        " 
+   git_proxy_status="${red}Not Setup${default}"  
+fi
+else
+   LAN_ip_git="${red}Not Setup  ${default}      "
+   PROXY_port_git="${red}Not Setup ${default}        " 
    git_proxy_status="${red}Not Setup${default}"  
 fi
 }
