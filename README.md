@@ -31,3 +31,5 @@ sudo bash ~/OrangePiProxy/OrangepiProxy.sh
 > :warning: 按需更改sudoers 的代理设置。
 
 > :warning: 生成了新的`ip_proxy` ，`wgetrc.bak` 为必要文件，请不要删除
+
+> :warning: 确保git代理设置成功请将项目安装在 /home/orangepi 目录下，即 `cd ~`
